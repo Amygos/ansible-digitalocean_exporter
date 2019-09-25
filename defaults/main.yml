@@ -1,0 +1,11 @@
+---
+digitalocean_exporter_version: 0.6
+digitalocean_exporter_web_listen_address: "0.0.0.0:9212"
+
+digitalocean_exporter_token:
+
+digitalocean_exporter_debug: ""
+
+digitalocean_exporter_http_timeout: ""
+
+digitalocean_exporter_web_path: ""

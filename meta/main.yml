@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  author: Matteo Valentini
+  description: Prometheus DigitalOcean Exporter
+  role_name: digitalocean_exporter
+  license: MIT
+  company: Nethesis
+  min_ansible_version: 2.6
+  platforms:
+    - name: EL
+      versions:
+        - 7 
+    - name: Fedora
+      versio ns:
+        - 30
+  galaxy_tags:
+    - monitoring
+    - prometheus
+    - exporter
+    - digitalocean
+    - metrics
+    - cloud
+
+
+dependencies: []

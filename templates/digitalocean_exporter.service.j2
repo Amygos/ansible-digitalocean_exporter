@@ -1,0 +1,38 @@
+[Unit]
+Description=Prometheus DigitalOcean Exporter
+After=network-online.target
+
+[Service]
+Type=simple
+User={{ __digitalocean_exporter_user }}
+Group={{ __digitalocean_exporter_group }}
+Environment="DIGITALOCEAN_TOKEN={{ digitalocean_exporter_token }}"
+Environment="WEB_ADDR={{ digitalocean_exporter_web_listen_address }}"
+{% if digitalocean_exporter_debug != "" %}
+Environment="DEBUG={{ digitalocean_exporter_debug }}"
+{% endif %}
+{% if digitalocean_exporter_http_timeout != "" %}
+Environment="HTTP_TIMEOUT={{ digitalocean_exporter_http_timeout }}"
+{% endif %}
+{% if digitalocean_exporter_web_path != "" %}
+Environment="WEB_PATH={{ digitalocean_exporter_web_path }}"
+{% endif %}
+
+ExecStart=/usr/local/bin/digitalocean_exporter
+
+SyslogIdentifier=digitalocean_exporter
+Restart=always
+RestartSec=5
+
+{% if digitalocean_exporter_systemd_version | int >= 232 %}
+PrivateUsers=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=yes
+ProtectSystem=strict
+{% else %}
+ProtectSystem=full
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+---
+- name: restart digitalocean exporter
+  become: true
+  systemd:
+    daemon_reload: true
+    name: digitalocean_exporter
+    state: restarted
